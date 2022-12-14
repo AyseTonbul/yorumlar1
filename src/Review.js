@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import people from './data';
 import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa';
 
+//Review adında component oluşturuldu..
 const Review = () => {
+  //Kisiler'in içeriğine ulaşmak için İndex state'i ve onun fonksiyonu setIndex oluşturuldu..Baslangıç degeri 0 atandı.
   const [index, setIndex] = useState(0);
+  //Oluşturulan index ile kişilere isim,meslek,resim,açıklama atandı..
   const { name, job, image, text } = people[index];
+  //Kişiler Listesine Numara atamak için Numara kontrol fonksiyon oluşturuldu..
   const checkNumber = (number) => {
     if (number > people.length - 1) {
       return 0;
@@ -14,18 +18,22 @@ const Review = () => {
     }
     return number;
   };
+  //Sonraki kisi index'i için fonsiyon oluşturuldu.. 
   const nextPerson = () => {
     setIndex((index) => {
       let newIndex = index + 1;
       return checkNumber(newIndex);
     });
   };
+
+  //Önceki kişi index'i için fonksiyon oluşturuldu..
   const prevPerson = () => {
     setIndex((index) => {
       let newIndex = index - 1;
       return checkNumber(newIndex);
     });
   };
+  //Rasgele kişi seçmek için fonksiyon oluşturuldu..
   const randomPerson = () => {
     let randomNumber = Math.floor(Math.random() * people.length);
     if (randomNumber === index) {
